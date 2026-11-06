@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Laboratório Simulado de Avaliação Nutricional da Gestante</title>
+<title>Laboratório Simulado de Avaliação Nutricional de Gestantes</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -234,7 +234,10 @@ table.t td:first-child{font-weight:900}
 .disclaimer{display:flex;gap:14px;align-items:flex-start;background:#fff8e8;border:1.5px solid #f3d38a;border-radius:22px;padding:16px 18px;margin-bottom:18px;font-size:14.5px;font-weight:600;color:#5c4512;scroll-margin-top:100px}
 .disclaimer b{color:#3d2e0a}
 .dic{font-size:24px;line-height:1}
-.cover-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:18px;margin-bottom:18px;align-items:start}
+.cover-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:18px;margin-bottom:18px;align-items:stretch}
+.cover-grid>.stack{display:flex;flex-direction:column}
+.cover-grid .credits{flex:1;display:flex;flex-direction:column}
+.cover-grid .credits>p:last-child{margin-top:auto!important;padding-top:12px}
 .ch{font-size:20px;margin:2px 0 12px}
 .author{display:flex;gap:12px;align-items:center}
 .author .aav{width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,#7c6ce6,#1daabe);color:#fff;font-weight:900;font-size:18px;display:grid;place-items:center;box-shadow:0 8px 16px -8px rgba(91,78,168,.8)}
@@ -349,6 +352,13 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center}
 header.top .btn{padding:7px 12px;font-size:14px}
 .brand h1{font-size:17.5px}
 
+details.refs summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;cursor:pointer}
+details.refs summary::-webkit-details-marker{display:none}
+.refcount{font-size:12.5px;font-weight:700}
+.refarrow{flex:0 0 40px;height:40px;border-radius:50%;display:grid;place-items:center;background:#f0f1f8;color:#5b4ea8;font-size:20px;transition:transform .25s,background .2s}
+details.refs summary:hover .refarrow{background:#e6e3fb}
+details.refs[open] .refarrow{transform:rotate(180deg)}
+details.refs[open] .refcount{display:none}
 @media (max-width:900px){.cover-hero{grid-template-columns:1fr;padding:28px 22px}.cover h1{font-size:32px}.cover-art{height:240px}.cover-grid{grid-template-columns:1fr}.cav{transform:scale(.8)!important}}
 @media (max-width:900px){
   .grid,.hero{grid-template-columns:1fr}
@@ -365,7 +375,7 @@ header.top .btn{padding:7px 12px;font-size:14px}
     <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn ghost" id="btnHomeTop">🏠 Início</button><button class="btn ghost" id="btnQuizTop">🧠 Quiz</button><button class="btn ghost" id="btnCfgTop">⚙️ Configurar</button><button class="btn ghost" id="btnCover">ℹ️ Sobre</button><button class="btn" id="btnRef">📋 Tabelas de referência</button></div>
   </header>
   <main id="app"></main>
-  <div class="foot"><b>Laboratório Simulado de Avaliação Nutricional da Gestante</b> · criado por Anny Cristine Araújo. Material didático com pacientes fictícias. Curvas de ganho de peso digitalizadas de forma aproximada a partir de Kac G, Carrilho TRB et al., Am J Clin Nutr 2021;113:1351–1360 — servem para treino, não para uso clínico. Adolescentes: Himes & Dietz, 1994; WHO, 1995. Gemelar: Luke, 2005. Perímetro braquial: WHO, 1995.</div>
+  <div class="foot"><b>Laboratório Simulado de Avaliação Nutricional de Gestantes</b> · criado por Anny Cristine Araújo. Quer citar o uso do site? É só copiar: Araújo, A. (2026). Laboratório Simulado de Avaliação Nutricional de Gestantes (Version 1.0.0) [Computer software]. https://doi.org/https://doi.org/10.5281/zenodo.23991658.</div>
 </div>
 
 <div class="modal" id="refModal" role="dialog" aria-modal="true" aria-label="Tabelas de referência">
@@ -401,7 +411,7 @@ header.top .btn{padding:7px 12px;font-size:14px}
       <a class="btn primary" href="http://lattes.cnpq.br/1147068814742797" target="_blank" rel="noopener">📄 Currículo Lattes ↗</a>
       <span class="mailchip">💌 <b>annycristinearaujo@gmail.com</b> <button class="minibtn" data-copy="annycristinearaujo@gmail.com">Copiar</button></span>
     </div>
-    <p class="muted" style="font-size:12.5px;margin:12px 0 0;font-weight:600">Sugestões e correções são bem-vindas pelo e-mail. 🤖 Laboratório desenvolvido por vibe coding: a autora descreveu cada parte em linguagem natural e o Claude (Anthropic) escreveu o código.</p>
+    <p class="muted" style="font-size:12.5px;margin:12px 0 0;font-weight:600">Sugestões e correções são bem-vindas pelo e-mail. 🤖 Laboratório desenvolvido por programação manual e vibe coding utilizando o Claude (Anthropic).</p>
     <p class="muted" style="font-size:12px;margin:6px 0 0;font-weight:600">Lattes: http://lattes.cnpq.br/1147068814742797</p>
   </div>
 </div>
@@ -1212,7 +1222,7 @@ function renderCover() {
     <div class="cover-hero">
       <div class="cover-txt">
         <div class="kicker">Laboratório virtual · Nutrição materna</div>
-        <h1>Laboratório Simulado de Avaliação Nutricional da Gestante</h1>
+        <h1>Laboratório Simulado de Avaliação Nutricional de Gestantes</h1>
         <p>Simulador de casos clínicos para praticar o diagnóstico nutricional, o acompanhamento do ganho de peso na curva e a avaliação bioquímica e clínica no pré-natal.</p>
         <div class="cover-btns">
           <button class="btn primary big-btn" id="btnStart">Iniciar ▶</button>
@@ -1232,7 +1242,7 @@ function renderCover() {
 
     <div class="disclaimer" id="about">
       <span class="dic">⚠️</span>
-      <div><b>Todos os casos são fictícios.</b> Pacientes, nomes, dados, relatos e resultados de exames foram criados exclusivamente para fins educacionais, como apoio ao ensino de estudantes de graduação em Nutrição. Qualquer semelhança com pessoas reais é coincidência. O material não substitui protocolos oficiais, diretrizes atualizadas nem o julgamento clínico profissional, e não deve ser usado para decisões de atendimento.</div>
+      <div><b>Todos os casos são fictícios.</b> Pacientes, nomes, dados, relatos e resultados de exames foram criados exclusivamente para fins educacionais, como ferramenta de apoio ao ensino de estudantes de graduação em Nutrição. Qualquer semelhança com pessoas reais é coincidência. Este material não substitui protocolos oficiais, diretrizes atualizadas nem o julgamento clínico profissional, e não deve ser usado para decisões de atendimento.</div>
     </div>
 
     <div class="cover-grid">
@@ -1255,20 +1265,19 @@ function renderCover() {
           <div class="kicker">Por trás do laboratório</div>
           <h3 class="ch">Quem fez acontecer</h3>
           <div class="author"><div class="aav">AC</div><div><b>Anny Cristine Araújo</b><span class="muted">Nutricionista · idealização, casos clínicos e conteúdo</span></div></div>
-          <div class="credrow"><span class="ci">🤖</span><span>Desenvolvido por <b>vibe coding</b>: a autora descreveu o laboratório em linguagem natural e o <b>Claude</b> (Anthropic), assistente de inteligência artificial, escreveu o código.</span></div>
+          <div class="credrow"><span class="ci">🤖</span><span>Desenvolvido por <b> programação manual e vibe coding</b>: utilizando o <b>Claude</b> (Anthropic), assistente de inteligência artificial.</span></div>
           <div class="credrow"><span class="ci">💌</span><span>Encontrou um erro ou tem uma sugestão? Escreva para <b class="mail">annycristinearaujo@gmail.com</b> <button class="minibtn" data-copy="annycristinearaujo@gmail.com">Copiar</button></span></div>
           <div class="actions" style="margin-top:12px"><button class="btn" id="btnAuthor">Conhecer a autora →</button><a class="btn ghost" href="http://lattes.cnpq.br/1147068814742797" target="_blank" rel="noopener">Currículo Lattes ↗</a></div>
-          <p class="muted" style="font-size:12.5px;margin:12px 0 0;font-weight:600">Material didático para a graduação em Nutrição · Versão 1.0 · novembro de 2026</p>
+          <p class="muted" style="font-size:12.5px;margin:12px 0 0;font-weight:600">Araújo, A. (2026). Laboratório Simulado de Avaliação Nutricional de Gestantes (Version 1.0.0) [Computer software]. https://doi.org/https://doi.org/10.5281/zenodo.23991658 · Versão 1.0 · novembro de 2026</p>
         </div>
       </div>
     </div>
 
-    <div class="card refs">
-      <div class="kicker">Referências</div>
-      <h3 class="ch">Base científica dos casos</h3>
-      <ol class="reflist">${REFS_FULL.map(r => `<li>${r}</li>`).join('')}</ol>
+    <details class="card refs">
+      <summary><div><div class="kicker">Referências</div><h3 class="ch" style="margin-bottom:0">Base científica dos casos</h3><span class="muted refcount">${REFS_FULL.length} referências · clique para ver</span></div><span class="refarrow" aria-hidden="true">▾</span></summary>
+      <ol class="reflist" style="margin-top:14px">${REFS_FULL.map(r => `<li>${r}</li>`).join('')}</ol>
       <p class="muted" style="font-size:12.5px;margin:10px 0 0;font-weight:600">As curvas de ganho de peso foram digitalizadas de forma aproximada a partir de Kac et al. (2021), apenas para fins de treino.</p>
-    </div>
+    </details>
   </section>`;
   $('#btnStart').onclick = renderHome;
   $('#btnAuthor').onclick = openAbout;
@@ -2288,7 +2297,7 @@ async function buildPDF(nome, turma) {
 
   // header
   doc.setFillColor(...col); doc.rect(0, 0, W, 28, 'F');
-  font('bold', 16, [255, 255, 255]); T('Laboratório Simulado de Avaliação Nutricional da Gestante', M, 13);
+  font('bold', 16, [255, 255, 255]); T('Laboratório Simulado de Avaliação Nutricional de Gestantes', M, 13);
   font('normal', 9.5, [255, 255, 255]); T('Resumo da avaliação  ·  caso fictício para fins didáticos', M, 20.5);
   y = 37;
   font('bold', 10.5); T('Aluno(a): ', M, y); const nw = doc.getTextWidth('Aluno(a): ');
@@ -2481,7 +2490,7 @@ async function buildPDF(nome, turma) {
   for (let i = 1; i <= pages; i++) {
     doc.setPage(i);
     font('normal', 7, [130, 136, 160]);
-    const ft = doc.splitTextToSize(pt('Laboratório criado por Anny Cristine Araújo. Material didático com paciente fictícia. Curvas: Kac G, Carrilho TRB et al., Am J Clin Nutr 2021;113:1351-1360 (digitalização aproximada). Adolescentes: Himes & Dietz, 1994; WHO, 1995. Gemelar: Luke, 2005. Perímetro braquial: WHO, 1995.'), W - 2 * M - 20);
+    const ft = doc.splitTextToSize(pt('Laboratório criado por Anny Cristine Araújo. Araújo, A. (2026). Laboratório Simulado de Avaliação Nutricional de Gestantes (Version 1.0.0) [Computer software]. https://doi.org/https://doi.org/10.5281/zenodo.23991658'), W - 2 * M - 20);
     doc.text(ft, M, 289);
     doc.text(`${i}/${pages}`, W - M, 289, { align: 'right' });
   }
