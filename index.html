@@ -1227,7 +1227,7 @@ function renderCover() {
         <div class="cover-btns">
           <button class="btn primary big-btn" id="btnStart">Iniciar ▶</button>
           <button class="btn ghost" id="btnQuizCover">🧠 Quiz</button>
-          <button class="btn ghost" id="btnAbout">Sobre o laboratório ↓</button>
+          
         </div>
         <div class="cover-cfg">${cfgBar('btnCfgCover')}</div>
       </div>
@@ -1274,7 +1274,7 @@ function renderCover() {
     </div>
 
     <details class="card refs">
-      <summary><div><div class="kicker">Referências</div><h3 class="ch" style="margin-bottom:0">Base científica dos casos</h3><span class="muted refcount">${REFS_FULL.length} referências · clique para ver</span></div><span class="refarrow" aria-hidden="true">▾</span></summary>
+      <summary><div><div class="kicker">Referências</div><h3 class="ch" style="margin-bottom:0">Base científica </h3><span class="muted refcount">${REFS_FULL.length} referências · clique para ver</span></div><span class="refarrow" aria-hidden="true">▾</span></summary>
       <ol class="reflist" style="margin-top:14px">${REFS_FULL.map(r => `<li>${r}</li>`).join('')}</ol>
       <p class="muted" style="font-size:12.5px;margin:10px 0 0;font-weight:600">As curvas de ganho de peso foram digitalizadas de forma aproximada a partir de Kac et al. (2021), apenas para fins de treino.</p>
     </details>
