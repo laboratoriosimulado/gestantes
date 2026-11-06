@@ -366,6 +366,13 @@ details.refs[open] .refcount{display:none}
   .patient .av{flex-basis:96px}
   header.top{position:static}
 }
+.citecard{display:flex;gap:16px;align-items:flex-start;margin-top:18px;background:linear-gradient(135deg,#f3f2ff,#eaf7fa)}
+.citeic{flex:0 0 52px;height:52px;border-radius:16px;background:#fff;display:grid;place-items:center;font-size:26px;box-shadow:var(--shadow)}
+.citebody{flex:1;min-width:0}
+.citebox{display:flex;gap:12px;align-items:center;background:#fff;border:1.5px dashed #c9c4f0;border-radius:16px;padding:12px 14px}
+.citebox b{flex:1;font-size:14px;font-weight:600;line-height:1.5;color:#2e334f;word-break:break-word}
+.citebox .btn{flex:0 0 auto}
+@media (max-width:700px){.citecard{flex-direction:column}.citebox{flex-direction:column;align-items:stretch}}
 </style>
 </head>
 <body>
@@ -1278,6 +1285,15 @@ function renderCover() {
       <ol class="reflist" style="margin-top:14px">${REFS_FULL.map(r => `<li>${r}</li>`).join('')}</ol>
       <p class="muted" style="font-size:12.5px;margin:10px 0 0;font-weight:600">As curvas de ganho de peso foram digitalizadas de forma aproximada a partir de Kac et al. (2021), apenas para fins de treino.</p>
     </details>
+        <div class="card citecard">
+      <div class="citeic">📚</div>
+      <div class="citebody">
+        <div class="kicker">Como citar</div>
+        <h3 class="ch" style="margin-bottom:4px">Usou este conteúdo e quer citar?</h3>
+        <p class="muted" style="margin:0 0 10px;font-weight:700;font-size:14px">É só copiar:</p>
+        <div class="citebox"><b>Araújo, A.C. (2026). Laboratório Simulado de Avaliação Nutricional de Gestantes (Version 1.0.0) [Computer software]. https://doi.org/10.5281/zenodo.23991658</b><button class="btn primary sm" data-copy="Araújo, A.C. (2026). Laboratório Simulado de Avaliação Nutricional de Gestantes (Version 1.0.0) [Computer software]. https://doi.org/10.5281/zenodo.23991658">📋 Copiar</button></div>
+      </div>
+    </div>
   </section>`;
   $('#btnStart').onclick = renderHome;
   $('#btnAuthor').onclick = openAbout;
