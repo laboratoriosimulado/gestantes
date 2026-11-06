@@ -3,7 +3,7 @@ message: "Quer citar o uso desse site? Veja como fazer:"
 title: "Laboratório Simulado de Avaliação Nutricional de Gestantes"
 authors:
   - family-names: "Araújo"
-    given-names: "Anny"
+    given-names: "Anny Cristine"
 version: 1.0.0
 date-released: 2026-11-05
 doi: "https://doi.org/10.5281/zenodo.23991658"
